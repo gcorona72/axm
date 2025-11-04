@@ -286,6 +286,50 @@
 </div>
     <!-- Start of bodyEnd -->
     
+    <script>
+    (function() {
+      function removeFramerBadge(root) {
+        try {
+          var container = (root || document).getElementById && (root || document).getElementById("__framer-badge-container");
+          if (container && container.parentNode) container.parentNode.removeChild(container);
+          var badges = (root || document).getElementsByClassName ? (root || document).getElementsByClassName("__framer-badge") : [];
+          for (var i = badges.length - 1; i >= 0; i--) {
+            var el = badges[i];
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+          }
+        } catch (e) { /* noop */ }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function() { removeFramerBadge(document); });
+      } else {
+        removeFramerBadge(document);
+      }
+
+      if (typeof MutationObserver !== "undefined") {
+        var observer = new MutationObserver(function(mutations) {
+          for (var m = 0; m < mutations.length; m++) {
+            var rec = mutations[m];
+            if (rec.addedNodes && rec.addedNodes.length) {
+              for (var j = 0; j < rec.addedNodes.length; j++) {
+                var node = rec.addedNodes[j];
+                if (node && node.nodeType === 1) {
+                  if (node.id === "__framer-badge-container" || (node.classList && node.classList.contains("__framer-badge"))) {
+                    if (node.parentNode) node.parentNode.removeChild(node);
+                  } else {
+                    removeFramerBadge(node);
+                  }
+                }
+              }
+            }
+          }
+        });
+        observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+      }
+    })();
+    </script>
+
+        <script src="/badge-remover.js"></script>
     <!-- End of bodyEnd -->
 </body>
 </html>
