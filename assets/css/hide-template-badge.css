@@ -1,0 +1,12 @@
+/* Oculta el badge del template (LaunchNow / Unlock template / Get Todo access) y el botón de editor */
+/* Selectores conocidos del contenedor del badge */
+div.framer-RbLO6,
+/* Por si cambia el nombre del componente */
+*[data-framer-name="Open"],
+*[data-framer-name~="Buy"],
+*[data-framer-name~="Preview"],
+/* Botón de la barra de edición de Framer */
+#__framer-editorbar-button,
+button[aria-labelledby="__framer-editorbar-label"] {
+  display: none !important;
+}
