@@ -27,11 +27,26 @@
     } catch(_e){}
     return false;
   }
+  function isFrameshipBadge(el) {
+    if (!el || el.nodeType !== 1) return false;
+    if (el.classList && el.classList.contains('framer-nm3c8g')) return true;
+    try {
+      var links = el.querySelectorAll('a[href]');
+      for (var i = 0; i < links.length; i++) {
+        var href = (links[i].getAttribute('href') || '').toLowerCase();
+        if (href.indexOf('frameship.io') !== -1) return true;
+        if (href.indexOf('buy.stripe.com') !== -1 && hasAnyText(el, ['upgrade', 'ecommerce', 'frameship'])) return true;
+      }
+    } catch (_e) {}
+    if (hasAnyText(el, ['upgrade to unlock ecommerce', 'use shopify on your website with frameship'])) return true;
+    return false;
+  }
+
   function findAllBadges() {
     var out = [];
     var byClass = document.querySelectorAll ? document.querySelectorAll('div.framer-RbLO6') : [];
     for (var i=0;i<byClass.length;i++){ if (isBadgeRoot(byClass[i])) out.push(byClass[i]); }
-    var textHints = ['launchnow','unlock template','get todo access','get this template','let\'s go!','let’s go!'];
+    var textHints = ['launchnow','unlock template','get todo access','get this template','let\'s go!','\u2019s go!'];
     var nodes = Array.prototype.slice.call(document.querySelectorAll('p,span,a,div'));
     for (var j=0;j<nodes.length;j++){
       var n = nodes[j];
@@ -49,9 +64,31 @@
       while (cur2 && tries2++ < 6 && !isBadgeRoot(cur2)) cur2 = cur2.parentElement;
       if (cur2 && isBadgeRoot(cur2)) out.push(cur2);
     }
+
+    // --- Frameship badges ---
+    var frameshipByClass = document.querySelectorAll ? document.querySelectorAll('div.framer-nm3c8g') : [];
+    for (var f = 0; f < frameshipByClass.length; f++) { out.push(frameshipByClass[f]); }
+    var frameshipLinks = Array.prototype.slice.call(document.querySelectorAll('a[href*="frameship.io"]'));
+    for (var fl = 0; fl < frameshipLinks.length; fl++) {
+      var fAnc = frameshipLinks[fl];
+      var fTries = 0;
+      while (fAnc && fTries++ < 8 && !isFrameshipBadge(fAnc)) fAnc = fAnc.parentElement;
+      if (fAnc && isFrameshipBadge(fAnc)) out.push(fAnc);
+    }
+    var frameshipTextNodes = Array.prototype.slice.call(document.querySelectorAll('p,span,div'));
+    for (var ft = 0; ft < frameshipTextNodes.length; ft++) {
+      var fn = frameshipTextNodes[ft];
+      if (!hasAnyText(fn, ['upgrade to unlock ecommerce', 'use shopify on your website with frameship'])) continue;
+      var fRoot = fn;
+      var fTries2 = 0;
+      while (fRoot && fTries2++ < 8 && !isFrameshipBadge(fRoot)) fRoot = fRoot.parentElement;
+      if (fRoot && isFrameshipBadge(fRoot)) out.push(fRoot);
+    }
+
     var uniq = [];
     for (var u=0; u<out.length; u++) { if (uniq.indexOf(out[u]) === -1) uniq.push(out[u]); }
-    return uniq.filter(function(n){ return looksSmall(n); });
+    // Filter: looksSmall for LaunchNow badges, but always include Frameship badges
+    return uniq.filter(function(n){ return isFrameshipBadge(n) || looksSmall(n); });
   }
   function removeBadges() {
     var removed = 0;

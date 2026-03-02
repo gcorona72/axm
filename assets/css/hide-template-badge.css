@@ -5,6 +5,11 @@ div.framer-RbLO6,
 *[data-framer-name="Open"],
 *[data-framer-name~="Buy"],
 *[data-framer-name~="Preview"],
+/* Badge de Frameship (UPGRADE TO Unlock ECOMMERCE) */
+div.framer-nm3c8g,
+[data-framer-appear-id="nm3c8g"],
+a[href*="frameship.io"],
+a[href*="buy.stripe.com"][href*="cN29CT"],
 /* Botón de la barra de edición de Framer */
 #__framer-editorbar-button,
 button[aria-labelledby="__framer-editorbar-label"] {
