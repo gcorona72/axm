@@ -150,7 +150,39 @@
     'We craft considered essentials that embody the principles of thoughtful design, embracing the belief that our everyday garments should be as intentionally crafted as the spaces we inhabit.':
       'Creamos esenciales pensados que encarnan los principios del diseño meditado, con la convicción de que nuestras prendas cotidianas deberían estar tan cuidadas como los espacios que habitamos.',
     'AXIOM began with a simple observation: the modern wardrobe should mirror the principles of great architecture.':
-      'AXIOM nació de una observación simple: el guardarropa moderno debería reflejar los principios de la gran arquitectura.',
+      'RELY RYDER nació de una observación simple: el guardarropa moderno debería reflejar los principios de la gran arquitectura.',
+    'AXIOM began with a simple observation: the modern wardrobe should mirror the principles of great architecture. Founded by a collective of designers and urban creatives.':
+      'RELY RYDER nació de una observación simple: el guardarropa moderno debería reflejar los principios de la gran arquitectura. Fundado por un colectivo de diseñadores y creativos urbanos.',
+    'Our values guide every decision we make, from design to production. We believe exceptional products come from clear principles, combining architectural influence with practical function.':
+      'Nuestros valores guían cada decisión que tomamos, del diseño a la producción. Creemos que los productos excepcionales nacen de principios claros, combinando influencia arquitectónica con función práctica.',
+    'We combine architectural principles with technical expertise to create our garments. Each piece goes through a rigorous development cycle, ensuring both quality construction and clean aesthetics.':
+      'Combinamos principios arquitectónicos con experiencia técnica para crear nuestras prendas. Cada pieza pasa por un riguroso ciclo de desarrollo, garantizando una construcción de calidad y una estética limpia.',
+    'Our team brings together diverse expertise across design, architecture, and technical apparel. Each member contributes unique perspectives while sharing our core vision for considered, architectural design.':
+      'Nuestro equipo reúne experiencia diversa en diseño, arquitectura y ropa técnica. Cada integrante aporta perspectivas únicas mientras comparte nuestra visión central de un diseño meditado y arquitectónico.',
+    'Built for real performance': 'Hecho para un rendimiento real',
+    'Built\nfor real\nperformance': 'Hecho\npara un\nrendimiento real',
+    'BUILT FOR REAL PERFORMANCE': 'HECHO PARA UN RENDIMIENTO REAL',
+
+    // Press / quotes section
+    'Design should serve both form and function in equal measure.':
+      'El diseño debe servir tanto a la forma como a la función por igual.',
+    'Every seam, every pocket, every element exists with purpose.':
+      'Cada costura, cada bolsillo, cada elemento existe con un propósito.',
+    'Quality is found in the deliberate consideration of every detail.':
+      'La calidad se encuentra en la consideración deliberada de cada detalle.',
+    'We subtract until only the essential remains.':
+      'Restamos hasta que solo quede lo esencial.',
+    'Clothing should enhance, not complicate, daily life.':
+      'La ropa debe mejorar, no complicar, la vida diaria.',
+    'Each piece adapts to your motion, your rhythm, your flow.':
+      'Cada pieza se adapta a tu movimiento, tu ritmo, tu flujo.',
+    'Founded by a collective of designers and urban creatives.':
+      'Fundado por un colectivo de diseñadores y creativos urbanos.',
+
+    // Brand swap
+    'AXIOM': 'RELY RYDER',
+    'Axiom': 'Rely Ryder',
+    'axiom': 'rely ryder',
     'The beginning': 'El comienzo',
     'First Collection Launch': 'Lanzamiento de la Primera Colección',
     'Launched our first collection of considered essentials, focusing on clean lines, technical materials, and architectural influences.':
