@@ -1,0 +1,55 @@
+/* AXM Instant Overrides
+   Cargado en <head> antes de cualquier renderizado para evitar FOUC.
+   Solo CSS — NO modifica el DOM, no rompe la hidratación de React.
+*/
+
+/* === Ocultar badges de Framer y plantilla === */
+#__framer-badge-container,
+div.framer-RbLO6,
+div.framer-nm3c8g,
+a[href*="launchnow.design"],
+a[href*="frameship.io"],
+a[href*="framer.com/templates"] {
+  display: none !important;
+}
+
+/* Clase auxiliar para que el JS pueda ocultar elementos extra */
+.axm-hidden { display: none !important; }
+
+/* Footer duplicado: Framer renderiza SSR variants para distintos breakpoints
+   (.ssr-variant ...). En algunos viewports queda visible el ssr-variant
+   ADEMÁS del footer activo. Ocultamos todos los footers que vivan dentro
+   de un .ssr-variant. El footer "activo" (sin wrapper) sigue mostrándose. */
+.ssr-variant footer,
+.ssr-variant [class*="framer-839vj"] { display: none !important; }
+
+/* === Logo: ocultar SVG original y mostrar RELY RYDER como overlay === */
+a[data-framer-name="Logo"] {
+  position: relative !important;
+}
+
+/* Esconder el SVG/imagen original sin alterar su layout (mantiene espacio reservado) */
+a[data-framer-name="Logo"] .framer-1ncbjao,
+a[data-framer-name="Logo"] svg,
+a[data-framer-name="Logo"] img {
+  visibility: hidden !important;
+}
+
+/* Texto RELY RYDER pintado sobre el contenedor del logo */
+a[data-framer-name="Logo"]::after {
+  content: "RELY RYDER";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Mona Sans', 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  white-space: nowrap;
+  pointer-events: none;
+  visibility: visible !important;
+}
+
